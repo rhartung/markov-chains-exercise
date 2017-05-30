@@ -47,13 +47,10 @@ def make_chains(text_string):
 
     # print word_list
 
-    for index in range(len(word_list) - 1):
-        if len(word_list) >= 2:
+    for index in range(len(word_list) - 2):
             bigram = (word_list[index], word_list[index + 1])
             chains[bigram] = word_list[2]
             word_list = word_list[1:]
-        else:
-            break
 
     # for bigram_tuple in bigram_list:
     #     chains[bigram_tuple] = []
