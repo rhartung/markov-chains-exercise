@@ -60,9 +60,22 @@ def make_chains(text_string):
 def make_text(chains):
     """Returns text from chains."""
 
-    words = []
+    # assigned randomly selected tuple from chains dictionary to variable bigram
+    bigram = choice(chains.keys())
 
-    # your code goes here
+    # converted bigram tuple to list and assigned to variable words
+    # this will allow adding additional strings and joining into one string
+    words = list(bigram)
+
+    # used while loop to iterate over dictionary because output should have
+    # random length
+    # for loop would only iterate a fixed number of times
+    while bigram != ('I', 'am?'):
+
+        posible_words = chains[bigram]
+        new_word = choice(posible_words)
+        words.append(new_word)
+        bigram = tuple(words[-2:])
 
     return " ".join(words)
 
@@ -77,3 +90,5 @@ chains = make_chains(input_text)
 
 # Produce random text
 random_text = make_text(chains)
+
+print random_text
