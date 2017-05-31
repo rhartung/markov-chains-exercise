@@ -11,8 +11,6 @@ def open_and_read_file(file_path):
     the file's contents as one string of text.
     """
 
-    # your code goes here
-
     text_string = open(file_path)
 
     return text_string.read()
@@ -42,21 +40,21 @@ def make_chains(text_string):
 
     chains = {}
 
-    # your code goes here
+    # separates string into words
     word_list = text_string.split()
 
-    # print word_list
 
+    # loops through range of word_list and stops when only 2 words remain
     for index in range(len(word_list) - 2):
-            bigram = (word_list[index], word_list[index + 1])
-            chains[bigram] = word_list[2]
-            word_list = word_list[1:]
+        # creates tuples that will be keys in chains dict
+        bigram = (word_list[index], word_list[index + 1])
+        # if key does not exist in chains dict, create empty list as value
+        if bigram not in chains:
+            chains[bigram] = []
 
-    # for bigram_tuple in bigram_list:
-    #     chains[bigram_tuple] = []
-    print chains
+        chains[bigram].append(word_list[index + 2])
 
-    # return chains
+    return chains
 
 
 def make_text(chains):
